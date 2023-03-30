@@ -1,0 +1,132 @@
+html, body {
+    scroll-behavior: smooth;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:white;
+}
+
+.flex-container {
+
+  max-width: 700px;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    background-color:#9b9b8d;
+  }
+  
+  .flex-head {
+    text-align: center;
+    background-color: #001780;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: white;
+    padding: 10px;
+  }
+  
+  .flex-nav {
+    text-align: right;
+    background-color: #0130ff;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left:  10px;
+  }
+  .flex-nav > a {
+   color: #ffffff;
+  }
+  .flex-section {    
+    background-color:#9b9b8d;;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .flex-section > div {
+    background-color: #f1f1f1f5; 
+    margin-top: 10px;
+    padding: 10px;
+  }
+  
+  .flex-foot {
+    text-align: left;
+    background-color: #0130ff;
+    margin:10px;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+}
+  @media (prefers-color-scheme: dark) {
+    html, body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #000;
+    }
+    
+    .flex-container {
+    
+      max-width: 700px;
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        background-color:#9b9b8d;
+      }
+      
+      .flex-head {
+        text-align: center;
+        background-color: #001780;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        color: white;
+        padding: 10px;
+      }
+      
+      .flex-nav {
+        text-align: right;
+        background-color: #0130ff;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left:  10px;
+      }
+      .flex-nav > a {
+       color: #ffffff;
+      }
+      .flex-section {    
+        background-color:#9b9b8d;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      
+      .flex-section > div {
+        background-color: #363633;; 
+        margin-top: 10px;
+        padding: 10px;
+        color:rgb(255, 255, 255);
+      }
+      
+      .flex-foot {
+        text-align: left;
+        background-color: #0130ff;
+        margin:10px;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+      }
+
+
+    .card-body {
+    padding: 0;
+}
+
+.image {
+    max-height: 350px;
+}
+
+ .item {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+ .item .value {
+    margin-left: auto;
+}
+
+ .json {
+    margin-bottom: 1.5rem;
+}
+  }
