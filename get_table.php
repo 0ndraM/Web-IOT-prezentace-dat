@@ -14,13 +14,13 @@ if (mysqli_connect_errno()) {
 
 // Define SQL queries for the two timeframes
 if ($_POST["timeframe"] == "4hours") {
-  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 4 HOUR";
+  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 4 HOUR AND MOD(id, 4) = 0;";
 } else if ($_POST["timeframe"] == "1hour") {
   $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 1 HOUR";
 } else if ($_POST["timeframe"] == "12hours") {
-  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 12 HOUR";
+  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 12 HOUR AND MOD(id, 12) = 0;";
 } else if ($_POST["timeframe"] == "24hours") {
-  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 24 HOUR";
+  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 24 HOUR AND MOD(id, 24) = 0;";
 }
 
 // Define function to print data from query
