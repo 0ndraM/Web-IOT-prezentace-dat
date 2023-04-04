@@ -1,8 +1,8 @@
 <?php
 // Connect to database
 $host = "innodb.endora.cz";
-$username = "";
-$password = "";
+$username = "0ndra";
+$password = "Heslo1234";
 $dbname = "0ndradb";
 $conn = mysqli_connect($host, $username, $password, $dbname);
 
@@ -44,11 +44,11 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $timestamp = date('H:i m/d', strtotime($row["timestamp"]));
         echo "<tr>";
-        echo "<td>" . $timestamp. "</td>";
-        echo "<td>" . $row['Vlhkost'] . "</td>";
-        echo "<td>" . $row['teplota1'] . "</td>";
-        echo "<td>" . $row['teplota2'] . "</td>";
-        echo "<td>" . $row['teplota3'] . "</td>";
+        echo "<td>" . $timestamp."ㅤ". "</td>";
+        echo "<td>" . $row['Vlhkost'] . '%'."</td>";
+        echo "<td>" . $row['teplota1'] .'°C'. "</td>";
+        echo "<td>" . $row['teplota2'] . '°C'."</td>";
+        echo "<td>" . $row['teplota3'] . '°C'."</td>";
         echo "<td>" . $row['id'] . "</td>";
         echo "</tr>";
     }
