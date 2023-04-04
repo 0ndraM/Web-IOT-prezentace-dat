@@ -64,37 +64,5 @@ if ($result->num_rows > 0) {
 // Print data for the selected timeframe
 print_data($query);
 
-// Define SQL queries for the two timeframes
-if ($_POST["timeframe"] == "4hours") {
-  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 4 HOUR";
-} else if ($_POST["timeframe"] == "1hour") {
-  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 1 HOUR";
-} else if ($_POST["timeframe"] == "12hours") {
-  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 12 HOUR";
-} else if ($_POST["timeframe"] == "24hours") {
-  $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 24 HOUR";
-}
-
-// Define function to count rows matching query
-function count_rows($query) {
-  global $conn;
-  $result = mysqli_query($conn, $query);
-
-  if (!$result) {
-    printf("Error: %s\n", mysqli_error($conn));
-    exit();
-  }
-
-  return $result->num_rows;
-}
-
-/* Print count of rows matching each query
-echo "1 hour interval: " . count_rows("SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 1 HOUR") . "<br>";
-echo "4 hour interval: " . count_rows("SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 4 HOUR") . "<br>";
-echo "12 hour interval: " . count_rows("SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 12 HOUR") . "<br>";
-echo "24 hour interval: " . count_rows("SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 24 HOUR") . "<br>";
-
-Close database connection
-*/
 mysqli_close($conn);
 ?>
