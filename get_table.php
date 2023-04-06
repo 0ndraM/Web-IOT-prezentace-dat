@@ -1,18 +1,16 @@
 <?php
-// Connect to database
+
 $host = "innodb.endora.cz";
 $username = "";
 $password = "";
 $dbname = "0ndradb";
 $conn = mysqli_connect($host, $username, $password, $dbname);
 
-// Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   exit();
 }
 
-// Define SQL queries for the two timeframes
 if ($_POST["timeframe"] == "4hours") {
   $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 4 HOUR AND MOD(id, 4) = 0;";
 } else if ($_POST["timeframe"] == "1hour") {
@@ -23,14 +21,12 @@ if ($_POST["timeframe"] == "4hours") {
   $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 24 HOUR AND MOD(id, 24) = 0;";
 }
 
-// Define function to print data from query
 function print_data($query) {
   global $conn;
   $result = mysqli_query($conn, $query);
-//echo "Query: " . $query . "<br>";
-//echo $_POST["timeframe"];
+
 if ($result->num_rows > 0) {
-     // Create the table
+
     echo '<table width=" "height="199"border="1" style="border-collapse: collapse;">';
     echo "<tr>";
     echo "<th>Čas</th>";
@@ -40,7 +36,7 @@ if ($result->num_rows > 0) {
     echo "<th>Teplota 3</th>";
     echo "<th>ID</th>";
     echo "</tr>";
-    // Loop through the results and create the rows
+
     while ($row = $result->fetch_assoc()) {
         $timestamp = date('H:i m/d', strtotime($row["timestamp"]));
         echo "<tr>";
@@ -53,7 +49,6 @@ if ($result->num_rows > 0) {
         echo "</tr>";
     }
     
-    // Close the table
     echo "</table>";
 
   } else {
@@ -61,7 +56,6 @@ if ($result->num_rows > 0) {
   }
 }
 
-// Print data for the selected timeframe
 print_data($query);
 
 mysqli_close($conn);
