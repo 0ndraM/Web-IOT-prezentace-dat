@@ -1,8 +1,8 @@
 <?php
 // Connect to database
 $host = "innodb.endora.cz";
-$username = "0ndra";
-$password = "Heslo1234";
+$username = "";
+$password = "";
 $dbname = "0ndradb";
 $conn = mysqli_connect($host, $username, $password, $dbname);
 
