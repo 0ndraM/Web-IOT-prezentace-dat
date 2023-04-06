@@ -1,19 +1,16 @@
 <?php
-// Connect to database
 $host = "innodb.endora.cz";
 $username = "";
 $password = "";
 $dbname = "0ndradb";
 $conn = mysqli_connect($host, $username, $password, $dbname);
 
-// Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   exit();
 }
 
 
-// Define SQL queries for the two timeframes
 if ($_POST["timeframe"] == "4hours") {
   $query = "SELECT * FROM wifi_data WHERE timestamp >= NOW() - INTERVAL 4 HOUR";
 } else if ($_POST["timeframe"] == "1hour") {
@@ -25,13 +22,11 @@ if ($_POST["timeframe"] == "4hours") {
 }
 
 
-// Define function to print data from query
 function print_data($query) {
   global $conn;
   $result = mysqli_query($conn, $query);
 
   while ($row = mysqli_fetch_assoc($result)) {
-// Format the data for Chart.js
 $labels = array();
 $vlhkost_data = array();
 $teplota1_data = array();
@@ -48,10 +43,8 @@ if ($result->num_rows > 0) {
     }
 }
 
-// Create a canvas element
 echo '<canvas id="myChart"></canvas>';
 
-// Initialize Chart.js
 echo '<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>';
 echo '<script>';
 echo 'var ctx = document.getElementById("myChart").getContext("2d");';
@@ -103,9 +96,7 @@ $conn->close();
   
 }
 
-// Print data for the selected timeframe
 print_data($query);
 
-// Close database connection
 mysqli_close($conn);
 ?>
